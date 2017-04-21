@@ -11,4 +11,4 @@ You can input the following command in terminal to run our programme:
 
 python pacman.py -l mediumSearch -p SearchAgent -a prob=MediumGraphicProblem
 
-The runtime of the programme is about 7 seconds.
+Runtime of the programme is about 7 seconds.
