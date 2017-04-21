@@ -40,7 +40,7 @@ Then corresponding singluar nodes can be decided without difficulty. It's worthw
 ### Compute Minimun Distance
 In this part, we compute the minimal path between given starting positions and ending positions which is implemented in *self.ComputeMinDistance*.
 
-Since we have already known the graph of the map, we can apply BFS (Dijsktra algorithm in graph theory) to compute. Normally we have to compute the minimal path between each node but for velocity, we add a variable in our function \\K\\. The meaning of \\K\\ is that we only compute first \\K\\ paths from one starting position. As a result, every singluar node is connected with no more than \\K\\ nodes. For example, node A is in connection with node B while for node B, node A is so far away that it's not in the  K-nearest neighbor.
+Since we have already known the graph of the map, we can apply BFS (Dijsktra algorithm in graph theory) to compute. Normally we have to compute the minimal path between each node but for velocity, we add a variable in our function $K$. The meaning of $K$ is that we only compute first $K$ paths from one starting position. As a result, every singluar node is connected with no more than $K$ nodes. For example, node A is in connection with node B while for node B, node A is so far away that it's not in the  K-nearest neighbor.
 ### Choose Minimal Cost Connection
 In this part, the aim is choosing the best connecting pairs. *self.ComputeBestConnect* is the crucial function in which we input a set of nodes' positions with the cost between them and it will return the best connecting method.
 
@@ -52,10 +52,10 @@ The first method is pass the minimal cost of previous solution to the *Backtrack
 
 The other one is that when we define our csp problem,  compute the minimal path cost of each node and minus it to abtain a new path cost. As a result, the method above can be applied more efficiently and speed up our computation.
 
-Nevertheless, there's still a distance of finding out the minimal cost connection because the starting node can be an odd vertex after connection. Hence totally there're three cases shown below assuming that the starting node is an even vertex originally and there're \\2n\\ odd vertexes in sum.
+Nevertheless, there's still a distance of finding out the minimal cost connection because the starting node can be an odd vertex after connection. Hence totally there're three cases shown below assuming that the starting node is an even vertex originally and there're $2n$ odd vertexes in sum.
 
-  1. Link \\n\\ pairs of singular nodes, i.e., end up in the starting point.
-  2. Link the starting node with one singular node and \\n-1\\ pairs of singular nodes, i.e., end up in a singular point.
+  1. Link $n$ pairs of singular nodes, i.e., end up in the starting point.
+  2. Link the starting node with one singular node and $n-1$ pairs of singular nodes, i.e., end up in a singular point.
   3. Link the starting node with one singular node, delete the replication of one deadend path and link the rest of singular nodes, i.e., end up in a deadend.
 
 The whole idea is implemented in *self.ComputeBestEuler* returning an adjusted Eulerian graph.
@@ -64,9 +64,9 @@ In this part, we compute our final path given the adjusted Eulerian graph and ma
 
 We apply Hierholzer's algorithm to derive the path given the starting position:
 
-  1. Follow a trail of edges from the starting point until returning to it or the ending point. It is not possible to get stuck at any vertex other than them, because the even degree of all vertices ensures that, when the trail enters another vertex \\w\\ there must be an unused edge leaving \\w\\. The tour formed in this way is a closed tour, but may not cover all the vertices and edges of the initial graph.
-  2. As long as there exists a vertex \\u\\ that belongs to the current tour but that has adjacent edges not part of the tour, start another trail from \\u\\, following unused edges until returning to \\u\\, and join the tour formed in this way to the previous tour.
+  1. Follow a trail of edges from the starting point until returning to it or the ending point. It is not possible to get stuck at any vertex other than them, because the even degree of all vertices ensures that, when the trail enters another vertex $w$ there must be an unused edge leaving $w$. The tour formed in this way is a closed tour, but may not cover all the vertices and edges of the initial graph.
+  2. As long as there exists a vertex $u$ that belongs to the current tour but that has adjacent edges not part of the tour, start another trail from $u$, following unused edges until returning to $u$, and join the tour formed in this way to the previous tour.
 
-The step 2 can be performed in constant time each, so the overall algorithm takes linear time, \\O(E)\\.
+The step 2 can be performed in constant time each, so the overall algorithm takes linear time, $O(E)$.
 
 Sometimes, the Pac-man needn't head to the node position because it's already been eaten. To be specific, if the Pac-man heads to one node then returns immediately, and moreover, the degree of this node is at least 3, e.g., it can be visited again, the Pac-man doesn't have to reach the position.
