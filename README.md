@@ -52,7 +52,7 @@ The first method is pass the minimal cost of previous solution to the *Backtrack
 
 The other one is that when we define our csp problem,  compute the minimal path cost of each node and minus it to abtain a new path cost. As a result, the method above can be applied more efficiently and speed up our computation.
 
-Nevertheless, there's still a distance of finding out the minimal cost connection because the starting node can be an odd vertex after connection. Hence totally there're three cases shown below assuming that the starting node is an even vertex originally and there're <math>2n<\math> odd vertexes in sum.
+Nevertheless, there's still a distance of finding out the minimal cost connection because the starting node can be an odd vertex after connection. Hence totally there're three cases shown below assuming that the starting node is an even vertex originally and there're <math>2n</math> odd vertexes in sum.
 
   1. Link <math>n</math> pairs of singular nodes, i.e., end up in the starting point.
   2. Link the starting node with one singular node and <math>n-1</math> pairs of singular nodes, i.e., end up in a singular point.
